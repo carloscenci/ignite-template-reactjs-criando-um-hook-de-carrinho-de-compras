@@ -8,6 +8,7 @@ import { useCart } from '../../hooks/useCart';
 
 const Header = (): JSX.Element => {
   const { cart } = useCart();
+  // List a quantity of objects in Array Cart
   const cartSize = cart.length;
 
   return (
