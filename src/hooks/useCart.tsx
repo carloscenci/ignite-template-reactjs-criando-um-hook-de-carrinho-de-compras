@@ -117,7 +117,39 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      // TODO
+      // Verify if amount is less or equal 0, and if is, finish the action
+      if(amount <= 0){
+        return;
+      }
+      
+      // Search the list of stocks in API per Id
+      const stock = await api.get(`/stock/${productId}`);
+      // Guard a amount of stock in a variable
+      const stockAmount = stock.data.amount;
+
+      // Verify if amount is more then stockAmount
+      if(amount > stockAmount) {
+        // If is, return the error and finish the action
+        toast.error('Quantidade solicitada fora de estoque');
+        return;
+      } 
+
+      // Create a new array of carts
+      const updatedCart = [...cart];
+      // Find the product in the list of carts per Id
+      const productExists = updatedCart.find(product => product.id === productId);
+      
+      // Verify if product Exists
+      if(productExists) {
+        // If is, the amount of product receive a new amount
+        productExists.amount = amount;
+        // Set the change in a list of carts
+        setCart(updatedCart)
+        // Set the change a local storage and convert to string
+        localStorage.setItem('@RocketShoes:cart', JSON.stringify(updatedCart));
+      } else {
+        throw Error();
+      }
     } catch {
       toast.error('Erro na alteração de quantidade do produto');
     }
