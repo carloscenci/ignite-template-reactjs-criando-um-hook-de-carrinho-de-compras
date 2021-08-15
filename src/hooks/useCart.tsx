@@ -91,9 +91,24 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      // TODO
+      // Create a new array of Carts
+      const updatedCart = [...cart];
+      // Find the product per index
+      const productIndex = updatedCart.findIndex(product => product.id === productId);
+
+      // If index exist and more ou equal 0
+      if(productIndex >= 0) {
+        // Remove the product
+        updatedCart.splice(productIndex, 1);
+        // Update the list of carts
+        setCart(updatedCart)
+        // Set the new list of products before remove the product in local storage
+        localStorage.setItem('@RocketShoes:cart', JSON.stringify(updatedCart));
+      } else {
+        throw Error();
+      }
     } catch {
-      // TODO
+      toast.error('Erro na remoção do produto');
     }
   };
 
@@ -104,7 +119,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     try {
       // TODO
     } catch {
-      // TODO
+      toast.error('Erro na alteração de quantidade do produto');
     }
   };
 
