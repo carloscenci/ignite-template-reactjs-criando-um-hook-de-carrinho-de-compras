@@ -1,4 +1,4 @@
-# Desafio realizado no Programa Ignite - Trilha ReactJS - da Rocketseat
+# Desafio realizado no Bootcamp Ignite - Trilha ReactJS - da Rocketseat
 
 :computer: Projeto de carrinho de compras de um ecommerce de tênis. 
 
