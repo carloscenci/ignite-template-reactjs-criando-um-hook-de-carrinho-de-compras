@@ -24,7 +24,7 @@ A proposta do desafio consiste em criar um hook que acrescente as seguintes func
 $ git clone https://github.com/carloscenci/ignite-template-reactjs-criando-um-hook-de-carrinho-de-compras.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd desafio2ignite
+$ cd ignite-template-reactjs-criando-um-hook-de-carrinho-de-compras
 
 # Instale as dependências
 $ yarn
